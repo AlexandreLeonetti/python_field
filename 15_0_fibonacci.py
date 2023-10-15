@@ -5,7 +5,7 @@
 
 cache = {}
 
-def fibo(n):
+def fibo(n):# this function is in the order of n
 
     if n <= 2:
         return 1
@@ -21,3 +21,14 @@ def fibo(n):
 
 
 print(fibo(90))
+
+
+
+def fi(n): # this function is in the order of 2^n
+    if n<=2:
+        return 1
+    else:
+        return fi(n-1) + fi(n-2)
+
+
+print(fi(35)) # this calculation takes longer time because value is not cashed
