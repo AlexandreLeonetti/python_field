@@ -15,8 +15,19 @@ def merge(*args):
     iters = [iter(x) for x in all_arrs]
 
     #initialize minHeap
+    for i , it  in enumerate(iters):
+        element = next(it, None)
+        heapq.heappush(minHeap,(element, i))
+    print(minHeap)
 
     #pass all values to minHeap and append them to result
+    while minHeap:
+        element, origin = heapq.heappop(minHeap)
+        #print(element,origin)
+        result.append(element)
+        nxtElement = next(iters[origin],None)
+        if nxtElement is not None:
+            heapq.heappush(minHeap,(nxtElement, origin))
 
 
     return  result
