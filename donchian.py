@@ -1,3 +1,4 @@
+# https://raposa.trade/blog/use-python-to-trade-the-donchian-channel/
 # this program calculates donchian channel 
 import pandas as pd
 import numpy as np
