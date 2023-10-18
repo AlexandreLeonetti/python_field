@@ -16,7 +16,7 @@ def merge(*args):
 
     #initialize minHeap
     for i , it  in enumerate(iters):
-        element = next(it, None)
+        element = next(it, 999) # must  add None in the next() method
         heapq.heappush(minHeap,(element, i))
     print(minHeap)
 
@@ -25,8 +25,9 @@ def merge(*args):
         element, origin = heapq.heappop(minHeap)
         #print(element,origin)
         result.append(element)
-        nxtElement = next(iters[origin],None)
-        if nxtElement is not None:
+        nxtElement = next(iters[origin], 999) # 999 is the default value returned by iterator
+        # when the iterator is exhausted
+        if nxtElement != 999:
             heapq.heappush(minHeap,(nxtElement, origin))
 
 
