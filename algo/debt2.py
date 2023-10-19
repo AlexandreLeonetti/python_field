@@ -1,5 +1,6 @@
 # here we are going to simulate
 # the ratio and liquidation price as a function of pending orders
+# 2023-10-19
 
 
 def simu (equity, debt, entryPrice):
