@@ -68,4 +68,23 @@ df.loc[df["Legendary"],"Type 1"].value_counts().plot(kind="bar")
 # most powerful pokemon by Total from the first 3 gen that is of type water.
 df.loc[(df["Generation"]<=3)&(df["Type 1"]=="Water")].sort_values("Total", ascending = False)
 
+# find most powerful pokemon by Total  where Type 1 or Type 2 == Dragon from gen 1 and 2
+df.loc[
+            ((df["Type 1"] == "Dragon" ) |    (df["Type 2"] == "Dragon")) 
+                &
+                    (df["Generation"].isin({5,6}))
+                    ]
+
+
+df.loc[
+            ((df["Type 1"] == "Dragon" ) | 
+                     (df["Type 2"] == "Dragon")) 
+                &
+                    (df["Generation"].isin({5,6}))
+                    ].sort_values(by="Total", ascending=False)
+
+
+# select all pokemons that have an Attack value above 100 and Type 1 == Fire 9ignore Type 2
+powerful_fire_df =df.loc[(df["Type 1"]=="Fire") & (df["Attack"]> 100)]
+
 
