@@ -87,4 +87,6 @@ df.loc[
 # select all pokemons that have an Attack value above 100 and Type 1 == Fire 9ignore Type 2
 powerful_fire_df =df.loc[(df["Type 1"]=="Fire") & (df["Attack"]> 100)]
 
+# select all pokemons of Type 1 == Water & Type 2 == Flying, 
+water_flying_df = df.loc[(df["Type 1"]=="Water")&(df["Type 2"]=="Flying")]
 
