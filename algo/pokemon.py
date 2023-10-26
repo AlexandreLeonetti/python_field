@@ -89,4 +89,27 @@ powerful_fire_df =df.loc[(df["Type 1"]=="Fire") & (df["Attack"]> 100)]
 
 # select all pokemons of Type 1 == Water & Type 2 == Flying, 
 water_flying_df = df.loc[(df["Type 1"]=="Water")&(df["Type 2"]=="Flying")]
+# select all Legendary where Type 1 == Fire, only select cloumn Name, Attack, Generation
+#legendary_fire_df = 
+df.loc[(df["Legendary"]==True)&(df["Type 1"]=="Fire"),["Name","Attack","Generation"]]
+
+# some plot :
+ax = df['Speed'].plot(kind='hist', figsize=(10, 5), bins=100)
+ax.axvline(df['Speed'].quantile(.05), color='red')
+ax.axvline(df['Speed'].quantile(.95), color='red')
+
+df.loc[
+        (CONDITION FOR INDEX),
+        (COLUMNS)
+        ]
+
+
+# select both 5% extremums of pokemons according to speed
+bottom_5 = df["Speed"].quantile(.05)
+top_5    = df["Speed"].quantile(.95)
+#(bottom_5,top_5)
+
+slow_fast_df = df.loc[(df["Speed"]<bottom_5)|(df["Speed"]>top_5)]
+
+
 
