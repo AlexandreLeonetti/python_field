@@ -111,5 +111,7 @@ top_5    = df["Speed"].quantile(.95)
 
 slow_fast_df = df.loc[(df["Speed"]<bottom_5)|(df["Speed"]>top_5)]
 
-
-
+#16
+df.loc[(df["Attack"]>140)&(df["Defense"]>130)&(df["Legendary"]==True)]
+#other answer
+df.loc[df["Legendary"]].sort_values(by=["Attack", "Defense"], ascending = False]
