@@ -14,30 +14,26 @@ def indicator(data: pd.DataFrame, period: int):
       return data
 
 #downloading the correct data from yahoo finance
-ticker = "LTC-BTC"
+ticker = "BTC-USD"
 yfObj = yf.Ticker(ticker) #returns data as panda dataframe.
-data = yfObj.history(start="2020-10-01", end="2023-10-15").drop(
+data = yfObj.history(start="2023-09-01", end="2023-10-25").drop(
             ["Volume", "Stock Splits"], axis=1)
 data = indicator(data, 10)
 #print(data)
 data.tail()
-#print(data.info())
-#print(data.shape)
-#print(data.loc["2020-10-23"])
-print(data.loc["2020-10-23","Open"])
-print(data["Open"].max())
-print(data.max())
-print(data.describe())
 
 print("*************")
 df =data
-df["ratio"]=(df["Open"]+df["Open"]-df["Close"])/df["Open"]
-
+#print(df)
+stop_percent = 0.993 #ratio value
+df["ratio"]=df["Close"]/df["Open"]
+df["Stop"]=df["Open"]*stop_percent
 # Set "selected" column based on the condition
-df.loc[df["ratio"] >= 0.59, "returns"] = df["ratio"]
+#df.loc[df["ratio"] >= 0.999, "returns"] = df["ratio"]
+df.loc[(df["Low"] >= df["Stop"]), "returns"] = df["ratio"] # need to add drawdawn
 
 # For rows where the condition is not met, set "selected" to 1.05
-#df["selected"].fillna(1.05, inplace=True)
+df["returns"].fillna(stop_percent, inplace=True)
 n_bins = 500
 
 # Generate two normal distributions
@@ -51,7 +47,7 @@ plt.hist(dist1, bins=n_bins)
 # Add a vertical line at x = 1
 plt.axvline(x=1, color='red', linestyle='--', label='x=1')
 #axs[1].axvline(x=1, color='red', linestyle='--', label='x=1')
-print(df)
+print(df[["Open", "Stop","Low", "returns"]])
 plt.show()
 
 
@@ -67,6 +63,6 @@ plt.xlabel("Date")
 plt.ylabel("Returns (%)")
 plt.xticks(rotation=45)
 plt.show()
-
 """
-"""      
+returns from oct 01 to oct 24 included is 1.257
+"""

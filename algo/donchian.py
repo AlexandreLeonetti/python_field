@@ -67,8 +67,8 @@ def calcReturns(df):
   df['strat_returns'] = df['position'].shift(1) * df['returns']
   df['strat_log_returns'] = df['position'].shift(1) * \
       df['log_returns']
-  df['cum_returns'] = np.exp(df['log_returns'].cumsum()) - 1
-  df['strat_cum_returns'] = np.exp(
+  df['cum_returns'] = np.exp(df['log_returns'].cumsum()) - 1 #buy and hold
+  df['strat_cum_returns'] = np.exp( # strategy returns
       df['strat_log_returns'].cumsum()) - 1
   df['peak'] = df['cum_returns'].cummax()
   df['strat_peak'] = df['strat_cum_returns'].cummax()

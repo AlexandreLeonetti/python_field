@@ -1,0 +1,12 @@
+# buy at the open with basic stop loss one ATR ( or similar) away from the open.
+#  if not stopped out, sell a the close. no matter what.
+# test it on a blind back test on BTC-LTC and BTC-EOS pair
+
+
+# 1 clean the LTC-BTC python program. and then calculate returns by myself.
+# then try different time periods and different stop losses.
+# calculate delta and average of all Highs-Opens on the pair. that will give a descent ide of where to place stop loss
+
+once all of this is done. try on different time frames.
+and then add a basic Moving Average condition.
+
